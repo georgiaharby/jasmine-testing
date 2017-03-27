@@ -88,13 +88,11 @@ $(function() {
     describe("Initial Entries", function () {
 
       beforeEach(function (done) {
-        setTimeout(function () {
-          loadFeed(0, done);
-        }, 1000);
+        loadFeed(0, done);
       });
 
       it("in feed-container", function (done) {
-        expect($('.feed').children().length).not.toBe(0);
+        expect($('.feed .entry').length).not.toBe(0);
         done();
       });
     });
@@ -118,11 +116,9 @@ $(function() {
       it ("content changes", function (done) {
         loadFeed(1, function () {
           two = $('.feed').children().text();
-          console.log(one);
-          console.log(two);
+          expect(one).not.toEqual(two);
+          done();
         });
-        expect(one).not.toEqual(two);
-        done();
       });
     });
 
